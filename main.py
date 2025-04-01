@@ -17,9 +17,9 @@ if __name__ == '__main__':
     argument_parser.add_argument('format', choices=['bin', 'hex'], nargs='?')
     argument_parser.add_argument('file', nargs='?')
     args = argument_parser.parse_args()
-    if not os.path.exists(f'programmers/{args.programmer}.py'):
+    if not os.path.exists(os.path.join('programmers', f'{args.programmer}.py')):
         raise Exception(f'Not found programmer {args.programmer}')
-    if not os.path.exists(f'devices/{args.device}.py'):
+    if not os.path.exists(os.path.join('devices', f'{args.device}.py')):
         raise Exception(f'Not found device {args.device}')
     programmer = load_class('programmers', args.programmer)()
     if not isinstance(programmer, Programmer):
